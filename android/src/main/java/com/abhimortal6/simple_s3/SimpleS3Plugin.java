@@ -118,6 +118,8 @@ public class SimpleS3Plugin implements FlutterPlugin, MethodCallHandler, EventCh
         int accessControl = call.argument("accessControl");
 
         System.out.println(call.arguments);
+        // test
+        parentResult.error("AWS Upload Error", e.getMessage());
 
 
         try {
@@ -133,7 +135,7 @@ public class SimpleS3Plugin implements FlutterPlugin, MethodCallHandler, EventCh
 
             transferUtility1 = TransferUtility.builder().context(mContext).awsConfiguration(AWSMobileClient.getInstance().getConfiguration()).s3Client(amazonS3Client).build();
         } catch (Exception e) {
-            parentResult.success(false);
+            parentResult.error("AWS Upload Error", e.getMessage());
             Log.e(TAG, "onMethodCall: exception: " + e.getMessage());
         }
 
@@ -222,7 +224,7 @@ public class SimpleS3Plugin implements FlutterPlugin, MethodCallHandler, EventCh
 
 
         } catch (Exception e) {
-            parentResult.success(false);
+            parentResult.error("AWS Delete Error", e.getMessage());
 
             Log.e(TAG, "onMethodCall: exception: " + e.getMessage());
         }
