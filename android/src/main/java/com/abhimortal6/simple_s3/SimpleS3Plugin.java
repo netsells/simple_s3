@@ -123,7 +123,7 @@ public class SimpleS3Plugin implements FlutterPlugin, MethodCallHandler, EventCh
         return;
 
 
-        try {
+        /*try {
 
             Regions parsedRegion = Regions.fromName(region);
             Regions parsedSubRegion = subRegion.length() != 0 ? Regions.fromName(subRegion) : parsedRegion;
@@ -182,7 +182,7 @@ public class SimpleS3Plugin implements FlutterPlugin, MethodCallHandler, EventCh
                 .upload(bucketName, awsPath, new File(filePath), objectMetadata, acl);
 
 
-        transferObserver1.setTransferListener(new Transfer());
+        transferObserver1.setTransferListener(new Transfer());*/
     }
 
 
