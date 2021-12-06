@@ -282,7 +282,7 @@ public class SimpleS3Plugin implements FlutterPlugin, MethodCallHandler, EventCh
                 case FAILED:
                     invalidateEventSink();
                     Log.d(TAG, "onStateChanged: \"FAILED, ");
-                    parentResult.success(false);
+                    parentResult.error("AWS Upload Error", "Upload Failed", null);
                     break;
                 default:
                     Log.d(TAG, "onStateChanged: \"SOMETHING ELSE, ");
@@ -306,6 +306,7 @@ public class SimpleS3Plugin implements FlutterPlugin, MethodCallHandler, EventCh
         public void onError(int id, Exception ex) {
             Log.e(TAG, "onError: " + ex);
             invalidateEventSink();
+            parentResult.error("AWS Upload Error", ex.getMessage(), null);
         }
     }
 }
