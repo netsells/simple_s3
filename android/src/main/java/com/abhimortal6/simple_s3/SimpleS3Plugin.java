@@ -120,6 +120,7 @@ public class SimpleS3Plugin implements FlutterPlugin, MethodCallHandler, EventCh
         System.out.println(call.arguments);
         // test
         parentResult.error("AWS Upload Error", "test error", null);
+        return;
 
 
         try {
