@@ -142,6 +142,7 @@ public class SimpleS3Plugin implements FlutterPlugin, MethodCallHandler, EventCh
         ObjectMetadata objectMetadata = new ObjectMetadata();
         System.out.println(fileName.substring(fileName.lastIndexOf(".")+1));
         objectMetadata.setContentType(contentType);
+        objectMetadata.setContentLength(1L);
 
 
         CannedAccessControlList acl;
