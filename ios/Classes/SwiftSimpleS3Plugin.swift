@@ -44,11 +44,7 @@ public class SwiftSimpleS3Plugin: NSObject, FlutterPlugin {
 
 
     private func upload(result: @escaping FlutterResult, args: Any?) {
-        let testError = FlutterError(errorWithCode: "500", message: "test error", details: nil)
-        result(testError)
-        return nil
-
-        /*let argsMap = args as! NSDictionary
+        let argsMap = args as! NSDictionary
         if  let filePath = argsMap["filePath"], let s3FolderPath = argsMap["s3FolderPath"], let subRegion = argsMap["subRegion"],
             let fileName = argsMap["fileName"], let poolID = argsMap["poolID"], let accessControl = argsMap["accessControl"],
             let bucketName = argsMap["bucketName"], let region = argsMap["region"], let contentType = argsMap["contentType"] {
@@ -76,10 +72,6 @@ public class SwiftSimpleS3Plugin: NSObject, FlutterPlugin {
             } else {
                 uploadRequest.key = (fileName as! String)
             }
-
-
-
-
 
             switch acs {
             case 1:
@@ -124,21 +116,18 @@ public class SwiftSimpleS3Plugin: NSObject, FlutterPlugin {
                             switch (errorCode) {
                             case .cancelled, .paused:
                                 print("Native: Upload Cancelled or Paused")
-                                result(false)
                                 break;
                             default:
                                 print("Native: Upload failed: \(error)")
-                                result(false)
                                 break;
                             }
                         } else {
                             print("Native: Upload failed: \(error)")
-                            result(false)
                         }
                     } else {
                         print("Native: Upload failed:\(error)")
-                        result(false)
                     }
+                    result(FlutterError(code: "AWS Upload Error", message: error.localizedDescription, details: nil))
                 }
 
                 if task.result != nil {
@@ -150,7 +139,7 @@ public class SwiftSimpleS3Plugin: NSObject, FlutterPlugin {
         } else {
             print("Native: One or more arguments is missing while calling func()")
             result(nil)
-        }*/
+        }
     }
 
     private func delete(result: @escaping FlutterResult, args: Any?) {
